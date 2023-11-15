@@ -6,6 +6,11 @@ export interface Sample {
     isNative: boolean; // determines if the original string is in the user's native language, and decides which side of the card phonetics will be placed
     isCharacter: boolean;
     context?: string;
+    superMemo: {
+        repitition: number;
+        EF: number;
+        interval: number;
+    }
 }
 
 const sample1: Sample = {
@@ -14,6 +19,11 @@ const sample1: Sample = {
     translation: "The salad has watercress and spinach",
     isNative: false,
     isCharacter: false,
+    superMemo: {
+        repitition: 0,
+        EF: 2.5,
+        interval: 0
+    }
 }
 
 const sample2: Sample = {
@@ -22,6 +32,11 @@ const sample2: Sample = {
     translation: "ka",
     isNative: false, // false means the original will have the phonetics if they are present in the instance
     isCharacter: true,
+    superMemo: {
+        repitition: 0,
+        EF: 2.5,
+        interval: 0
+    }
 }
 
 const sample3: Sample = {
@@ -31,6 +46,11 @@ const sample3: Sample = {
     phonetic: "o-na-ji",
     isNative: false,
     isCharacter: false,
+    superMemo: {
+        repitition: 0,
+        EF: 2.5,
+        interval: 0
+    }
 }
 
 const sample4: Sample = {
@@ -40,6 +60,11 @@ const sample4: Sample = {
     phonetic: "o-na-ji",
     isNative: true,
     isCharacter: false,
+    superMemo: {
+        repitition: 0,
+        EF: 2.5,
+        interval: 0
+    }
 }
 
 const sample5: Sample = {
@@ -49,7 +74,12 @@ const sample5: Sample = {
     phonetic: "kon-ni-chi-wa",
     isNative: true,
     isCharacter: false,
-    context: "mid-day"
+    context: "mid-day",
+    superMemo: {
+        repitition: 0,
+        EF: 2.5,
+        interval: 0
+    }
 }
 
 const samples = [
