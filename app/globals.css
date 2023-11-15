@@ -5,13 +5,19 @@
 @media (min-width: 768px) {
   .card {
     box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-    height: 30%;
-    width: 40%;
     background-color: rgb(250, 250, 250);
     border-radius: 5px;
   }
 
   .card-1 {
     width: 40%;
+    height: 30%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(82, 82, 82);
+    font-family: var(--font-poppins);
   }
 }
