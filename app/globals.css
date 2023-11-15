@@ -24,4 +24,8 @@
     color: rgb(82, 82, 82);
     font-family: var(--font-poppins);
   }
+
+  .poppins {
+    font-family: var(--font-poppins);
+  }
 }
