@@ -1,26 +1,30 @@
 "use client"
-
 import { useState } from "react";
+import { Sample } from "@/lib/samples";
+import CardOptions from "./cardOptions";
 
-interface sample {
-    original: string;
-    translation: string;
+interface Props {
+    cardInfo: Sample
 }
 
-const sample1: sample = {
-    original: "La ensalada lleva berro y espinaca",
-    translation: "The salad has watercress and spinach"
-}
-
-export default function Card(){
+export default function Card({ cardInfo }: Props){
     const [isClicked, setIsClicked] = useState<boolean>(false);
 
     return (
-        <div onClick={() => setIsClicked(!isClicked)} className="card card-1">
-            {isClicked ? 
-            <p>{sample1.original}</p>
-            :
-            <p>{sample1.translation}</p>}
+        <div onClick={() => setIsClicked(!isClicked)} className="card card-1 relative">
+            {!cardInfo.isCharacter && cardInfo?.phonetic && !cardInfo.isNative ? 
+                <p className="text-xs">{cardInfo.phonetic}</p> : null
+            }
+            <p className="font-semibold text-xl">{cardInfo.original}</p>
+            {!isClicked ? null :
+            <> 
+                <div className="h-[1px] w-1/2 mb-1.5 mt-1 bg-gray-400" />
+                <p className="font-semibold text-sm">{`${cardInfo.translation}`}</p>
+                {cardInfo.isNative}<p></p>
+            </>
+            }
+            <CardOptions />
+            <p className="absolute text-gray-500 -bottom-6 text-sm">click card to reveal answer</p>
         </div>
     )
 }
