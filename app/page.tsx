@@ -7,8 +7,7 @@ import { authConfig } from '@/lib/auth/config'
 
 export default async function Home() {
   const session = await getServerSession(authConfig);
-
-  console.log("Session: ", session);
+  // console.log("Session: ", session);
 
   return (
    <div className="w-full h-full position fixed flex justify-center items-center bg-gray-200">

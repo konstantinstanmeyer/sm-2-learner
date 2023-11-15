@@ -1,4 +1,5 @@
 export interface Card {
+    _id: string;
     language: string;
     original: string;
     translation: string;
