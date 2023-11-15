@@ -1,5 +1,6 @@
 import GoogleProvider from "next-auth/providers/google";
 import mongoDBConnection from "../mongodb/connection";
+import User from "@/models/user";
 
 export const authConfig = {
     providers: [
@@ -9,7 +10,7 @@ export const authConfig = {
         })
     ],
     callbacks: {
-        async signIn({ user, account }) {
+        async signIn({ user, account }: any) {
           if (account.provider === "google") {
             const { name, email } = user;
             try {
