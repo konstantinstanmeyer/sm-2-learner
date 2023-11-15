@@ -8,7 +8,7 @@ export interface Card {
     isCharacter: boolean;
     context?: string;
     superMemo: {
-        repitition: number;
+        repititions: number;
         EF: number;
         interval: number;
     }

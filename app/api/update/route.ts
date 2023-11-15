@@ -7,6 +7,6 @@ export async function POST(request: NextRequest) {
   console.log("hello there")
   await mongoDBConnection();
   console.log("2222")
-  await User.create({ name, email });
+  await User.create({ email });
   return NextResponse.json({ message: "User Registered" }, { status: 201 });
 }
