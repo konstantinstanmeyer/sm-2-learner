@@ -5,6 +5,7 @@ export interface Sample {
     phonetic?: string;
     isNative: boolean; // determines if the original string is in the user's native language, and decides which side of the card phonetics will be placed
     isCharacter: boolean;
+    context?: string;
 }
 
 const sample1: Sample = {
@@ -41,8 +42,18 @@ const sample4: Sample = {
     isCharacter: false,
 }
 
+const sample5: Sample = {
+    language: "Japanese",
+    original: "hello",
+    translation: "こんにちは",
+    phonetic: "kon-ni-chi-wa",
+    isNative: true,
+    isCharacter: false,
+    context: "mid-day"
+}
+
 const samples = [
-    sample1, sample2, sample3, sample4
+    sample1, sample2, sample3, sample4, sample5
 ]
 
 export default samples

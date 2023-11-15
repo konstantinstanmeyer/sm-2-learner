@@ -7,7 +7,7 @@ export default function Home() {
   return (
    <div className="w-full h-full position fixed flex justify-center items-center bg-gray-200">
     <SignIn />
-    <Card cardInfo={samples[3]} />
+    <Card cardInfo={samples[4]} />
    </div>
   )
 }

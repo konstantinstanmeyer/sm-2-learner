@@ -15,7 +15,7 @@ export default function Card({ cardInfo }: Props){
             {!cardInfo.isCharacter && cardInfo?.phonetic && !cardInfo.isNative ? 
                 <p className="text-xs">{cardInfo.phonetic}</p> : null
             }
-            <p className="font-[500] text-xl">{cardInfo.original}</p>
+            <p className="font-[500] text-xl flex flex-row items-center">{cardInfo.original}{cardInfo?.context ? <span className="ml-2 text-xs">({cardInfo.context})</span>: null}</p>
             {!isClicked ? null :
             <>
                 <div className="h-[1px] w-1/2 mb-1.5 mt-1 bg-gray-400" />
