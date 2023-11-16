@@ -1,6 +1,7 @@
 import './globals.css'
 import { Poppins } from 'next/font/google'
 import { NextAuthProvider } from './providers'
+import Navbar from '@/components/Navbar'
 
 export const metadata = {
   title: 'Create Next App',
@@ -19,9 +20,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html className={`${poppins.variable}`} lang="en">
+    <html className={`${poppins.variable} bg-gray-200`} lang="en">
       <NextAuthProvider>
-        <body className={''}>{children}</body>
+        <body className={''}>
+          <Navbar />
+          {children}
+        </body>
       </NextAuthProvider>
     </html>
   )
