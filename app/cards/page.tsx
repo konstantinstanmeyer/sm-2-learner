@@ -1,5 +1,17 @@
 import { getServerSession } from "next-auth";
 
+export default async function Cards(){
+    const data = await getCards();
+
+    if(!data) return <p>not logged in</p>
+
+    return (
+        <div>
+
+        </div>
+    )
+}
+
 async function getCards(){
     const session = await getServerSession()
     const email = session?.user?.email;
@@ -20,16 +32,4 @@ async function getCards(){
     } else {
         return false;
     }
-}
-
-export default async function Cards(){
-    const data = await getCards();
-
-    if(data) return <p>not logged in</p>
-
-    return (
-        <div>
-
-        </div>
-    )
 }

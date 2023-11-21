@@ -1,7 +1,7 @@
 import mongoDBConnection from "@/lib/mongodb/connection";
 import User from "@/models/user";
 import { NextRequest, NextResponse } from "next/server";
-import { Card } from "@/types/models";
+import { UserModel } from "@/types/models";
 import { headers } from "next/headers";
 
 export async function POST(request: NextRequest) {
