@@ -6,25 +6,25 @@ export default async function Navbar(){
     const session = await getServerSession();
 
     return (
-        <>
+        <div className="z-50 w-screen h-[9vh] flex flex-row items-center fixed top-0 bg-white">
+            <img src="/flash-card.png" className="h-[60%] mr-auto invert-[30%] ml-3" />
             {
             !session?.user 
             ? 
             <SignIn /> 
             :
         
-            <div className="z-40 absolute right-0 top-0 mr-3 mt-3 flex-col">
-                <a href="/profile" className="card block p-2 rounded-md">
-                {session.user?.image ? 
-                    <img className="w-16" alt="profile-picture" src={session?.user?.image as string} />
-                    :
-                    <p className="poppins text-gray-600 text-md">Hello, {session.user.name?.split(" ")[0]}</p>
-                }
-                <p className="mt-1 text-center text-sm underline underline-offset-2 text-gray-600 poppins">profile</p>
+            <div className="rounded-md relative h-full ml-auto mr-3">
+                <a href="/profile" className="flex flex-row relative h-full items-center">
+                    {session.user?.image ? 
+                        <img className="h-[60%] rounded-full" alt="profile-picture" src={session?.user?.image as string} />
+                        :
+                        null
+                    }
+                    <p className="poppins text-gray-600 text-md font-[500] ml-2">{session.user.name?.split(" ")[0]}</p>
                 </a>
-                <SignOut />
             </div>
             }
-        </>
+        </div>
     )
 }

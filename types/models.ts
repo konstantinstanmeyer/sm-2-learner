@@ -13,3 +13,9 @@ export interface Card {
         interval: number;
     }
 }
+
+export interface UserModel {
+    email: string;
+    name: string;
+    cards: Array<{language: string; cards: Array<Card>}>
+}

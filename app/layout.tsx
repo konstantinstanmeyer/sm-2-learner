@@ -26,6 +26,7 @@ export default function RootLayout({
     <html className={`${poppins.variable} bg-gray-200`} lang="en">
       <NextAuthProvider>
         <body className={''}>
+          {/* @ts-expect-error Async Server Component */}
           <Navbar />
           {children}
         </body>

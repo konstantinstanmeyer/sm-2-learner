@@ -1,7 +1,8 @@
+import type { UserModel } from "@/types/models";
 import mongoose, { Schema, models } from "mongoose";
 import cardSchema from "./card"
 
-const userSchema = new Schema(
+const userSchema = new Schema<UserModel>(
   {
     email: {
       type: String,
