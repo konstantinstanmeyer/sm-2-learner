@@ -11,7 +11,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    cards: [cardSchema]
+    cards: [{
+      language: String,
+      cards: [cardSchema]
+    }]
   },
   { timestamps: true }
 );
