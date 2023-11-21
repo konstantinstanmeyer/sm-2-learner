@@ -1,12 +1,9 @@
-"use client"
-
 import SignIn from '@/components/SignIn'
 import SignOut from '@/components/SignOut'
-import { useSession } from 'next-auth/react'
+import { getServerSession } from 'next-auth';
 
-export default function Navbar(){
-    const { status, data: session } = useSession();
-    console.log("Session: ", session);
+export default async function Navbar(){
+    const session = await getServerSession();
 
     return (
         <>
