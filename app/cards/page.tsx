@@ -5,9 +5,15 @@ export default async function Cards(){
 
     if(!data) return <p>not logged in</p>
 
-    return (
-        <div>
+    // console.log(data)
 
+    return (
+        <div className="mt-[10vh] w-screen flex flex-col items-center">
+            {data.length < 1 ? 
+            <div className="h-[90vh] ">
+                hello hello
+            </div> : null
+            }
         </div>
     )
 }

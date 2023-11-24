@@ -7,7 +7,9 @@ export default async function Navbar(){
 
     return (
         <div className="z-50 w-screen h-[9vh] flex flex-row items-center fixed top-0 bg-white">
-            <img src="/flash-card.png" className="h-[60%] mr-auto invert-[30%] ml-3" />
+            <a href="/cards" className="h-full relative flex items-center">
+                <img src="/flash-card.png" className="h-[60%] mr-auto invert-[30%] ml-3" />
+            </a>
             {
             !session?.user 
             ? 
