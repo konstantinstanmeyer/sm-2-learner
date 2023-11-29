@@ -44,6 +44,10 @@ const cardSchema = new Schema(
                 required: true,
             }
         },
+        image: {
+            required: false,
+            type: String
+        }
     },
     { timestamps: true }
 )
