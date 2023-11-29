@@ -8,11 +8,15 @@ export default async function Cards(){
     // console.log(data)
 
     return (
-        <div className="mt-[10vh] w-screen flex flex-col items-center">
+        <div className="w-screen flex flex-col items-center relative">
             {data.length < 1 ? 
-            <div className="h-[90vh] ">
-                hello hello
-            </div> : null
+            <div className="h-screen flex items-center justify-center">
+                add+...
+            </div>
+            :
+            <div className="flex w-3/4 flex-wrap">
+                
+            </div>
             }
         </div>
     )
