@@ -8,7 +8,7 @@ export default async function Navbar(){
     return (
         <div className="z-50 w-screen h-[9vh] flex flex-row items-center fixed top-0 bg-white">
             <a href="/cards" className="h-full relative flex items-center">
-                <img src="/flash-card.png" className="h-[60%] mr-auto invert-[30%] ml-3" />
+                <img src="/flash-card.png" className="h-[60%] mr-auto ml-3" />
             </a>
             {
             !session?.user 
@@ -23,7 +23,7 @@ export default async function Navbar(){
                         :
                         null
                     }
-                    <p className="poppins text-gray-600 text-md font-[500] ml-2">{session.user.name?.split(" ")[0]}</p>
+                    <p className="poppins text-black text-md font-[500] ml-2">{session.user.name?.split(" ")[0]}</p>
                 </a>
             </div>
             }

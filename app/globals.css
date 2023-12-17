@@ -6,6 +6,13 @@
   cursor: pointer;
 } */
 
+#keyboard > div > p {
+  background: #e0e0e0;
+  border-radius: 7px;
+  box-shadow:  5px 5px 13px #aaaaaa,
+                -5px -5px 13px #ffffff;
+}
+
 @media (min-width: 768px) {
   .card {
     box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
@@ -27,5 +34,12 @@
 
   .poppins {
     font-family: var(--font-poppins);
+  }
+
+  #testing {
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow:  5px 5px 13px #a6a6a6,
+                 -5px -5px 13px #ffffff;
   }
 }

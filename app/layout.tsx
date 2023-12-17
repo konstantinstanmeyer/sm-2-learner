@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html className={`${poppins.variable} bg-gray-200`} lang="en">
+    <html className={`${poppins.variable} bg-black/10`} lang="en">
       <NextAuthProvider>
         <body className={''}>
           {/* @ts-expect-error Async Server Component */}
