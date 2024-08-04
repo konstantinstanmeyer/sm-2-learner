@@ -45,7 +45,7 @@ export default function AddCards(){
             </form>
             <Keyboard />
             <div id="previous-cards" className="">
-                                      
+                        
             </div>
             {/* <form>
                 <input 

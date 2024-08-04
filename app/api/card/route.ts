@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
   const { email, card } = await request.json();
   const filter = { email: email };
   await mongoDBConnection();
-  console.log("2222")
+  console.log("2222");
   const user = await User.findOne(filter);
   console.log(user)
   return NextResponse.json({ message: "User Registered" }, { status: 201 });

@@ -25,7 +25,6 @@ export default function Keyboard(){
                 <p>l</p>
             </div>
             <div className="ml-8  [&>p]:w-14 [&>p]:flex [&>p]:justify-center [&>p]:items-center [&>p]:aspect-square [&>p]:ml-2">
-            <p>a</p>
                 <p>z</p>
                 <p>x</p>
                 <p>c</p>
