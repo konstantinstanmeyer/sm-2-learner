@@ -12,11 +12,20 @@ export default function AddCards(){
     const [cards, setCards] = useState<Array<Card>>([]);
     const [currentLanguage, setCurrentLanguage] = useState<string>("id");
     const [previewCards, setPreviewCards] = useState<Array<any>>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     useEffect(() => {
+        setIsLoading(true);
         async function populatePreview(){
-            // setPreviewCards(await fetch("http://localhost:3000/api/language"));
+            setPreviewCards((await fetch("http://localhost:3000/api/language/" + currentLanguage, {
+                method: "GET",
+            })) as any);
+
+            setIsLoading(false);
         }
+
+        populatePreview();
+
     }, [currentLanguage])
     
     async function handleFileUpload(e: ChangeEvent){
@@ -46,6 +55,15 @@ export default function AddCards(){
     
     return (
         <div id="card-container" className="mt-[40vh] card-container flex items-center flex-col justify-center">
+            <div>
+                <select onChange={(e: any) => setCurrentLanguage(e.target.value)}>
+                    <option>id</option>
+                    <option>as</option>
+                    <option>en</option>
+                    <option>il</option>
+                    <option>sp</option>
+                </select>
+            </div>
             <form id="testing" className="w-1/2 h-fit bg-white mb-4">
                 <input type="text" placeholder="" />
             </form>
