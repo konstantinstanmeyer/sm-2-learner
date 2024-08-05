@@ -4,6 +4,7 @@ import convertToBase64 from "@/util/convertToBase64";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Card } from "@/types/models";
 import fetchLanguage from '@/util/language'
+import PreviewCard from "./PreviewCard";
 
 const WIDTH = 100;
 
@@ -13,25 +14,31 @@ export default function AddCards(){
     const [currentLanguage, setCurrentLanguage] = useState<string>("id");
     const [previewCards, setPreviewCards] = useState<Array<any>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isChange, setIsChange] = useState<boolean>(true);
 
     useEffect(() => {
         setIsLoading(true);
+
         async function populatePreview(){
             // setPreviewCards((await fetch("http://localhost:3000/api/language/" + currentLanguage, {
             //     method: "GET",
             // })) as any);
-
+        
             const response = await fetch("http://localhost:3000/api/language/" + currentLanguage);
-
-            const result: any = await response.json();
-
-            console.log(result.textBlocks);
-
+        
+            const result = await response.json();
+        
+            const textBlocks = result.textBlocks;
+        
+            setPreviewCards(textBlocks);
+        
             setIsLoading(false);
         }
 
-        populatePreview();
-
+        if(isChange){
+            populatePreview();
+            setIsChange(false);
+        }
     }, [currentLanguage])
     
     async function handleFileUpload(e: ChangeEvent){
@@ -76,10 +83,12 @@ export default function AddCards(){
             <button className="bg-gray-300 justify-center items-center flex p-4">
                 <h3 className="w-fit h-fit">Populate Cards (add 5)</h3>
             </button>
-            <button>
-                <p>Preview Selection:</p>
-                <div></div>
-            </button>
+            <p>Preview Selection:</p>
+            <div>
+                {previewCards.map((cardInfo, i) => 
+                    <PreviewCard key={ i + "previewCard"}id={"previewCard" + i} description={cardInfo} />
+                )}
+            </div>
             {/* <Keyboard /> */}
             <div id="previous-cards" className="">
                         
