@@ -11,7 +11,7 @@ export default async function Cards(){
         <div className="w-screen flex flex-col items-center relative">
             {data.length < 1 ? 
             <div className="h-screen flex items-center justify-center">
-                add+...
+                <a href="/cards/add">add+...</a>
             </div>
             :
             <div className="flex w-3/4 flex-wrap">

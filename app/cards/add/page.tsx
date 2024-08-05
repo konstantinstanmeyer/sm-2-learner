@@ -17,9 +17,15 @@ export default function AddCards(){
     useEffect(() => {
         setIsLoading(true);
         async function populatePreview(){
-            setPreviewCards((await fetch("http://localhost:3000/api/language/" + currentLanguage, {
-                method: "GET",
-            })) as any);
+            // setPreviewCards((await fetch("http://localhost:3000/api/language/" + currentLanguage, {
+            //     method: "GET",
+            // })) as any);
+
+            const response = await fetch("http://localhost:3000/api/language/" + currentLanguage);
+
+            const result: any = await response.json();
+
+            console.log(result.textBlocks);
 
             setIsLoading(false);
         }

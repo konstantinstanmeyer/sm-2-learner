@@ -1,3 +1,5 @@
+"use client"
+
 import SignIn from '@/components/SignIn'
 import SignOut from '@/components/SignOut'
 import { getServerSession } from 'next-auth';
@@ -8,7 +10,7 @@ export default async function Navbar(){
     return (
         <div className="z-50 w-screen h-[9vh] flex flex-row items-center fixed top-0 bg-white">
             <a href="/cards" className="h-full relative flex items-center">
-                <img src="/flash-card.png" className="h-[60%] mr-auto ml-5" />
+                <img src="/indonesia.png" className="h-[60%] mr-auto ml-5 shadow-xl" />
             </a>
             {
             !session?.user 
