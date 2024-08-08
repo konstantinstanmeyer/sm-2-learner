@@ -42,4 +42,9 @@
     box-shadow:  5px 5px 13px #a6a6a6,
                  -5px -5px 13px #ffffff;
   }
+
+  .neumorphic {
+    box-shadow:  5px 5px 13px #a6a6a6,
+                 -5px -5px 13px #ffffff;
+  }
 }

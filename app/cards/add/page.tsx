@@ -8,38 +8,30 @@ import PreviewCard from "./PreviewCard";
 
 const WIDTH = 100;
 
+function getData(currentLanguage: string): Promise<any>{
+    return fetch("http://localhost:3000/api/language/" + currentLanguage)
+    .then(r => r.json())
+}
+
 export default function AddCards(){
     const [image, setImage] = useState<string>("");
     const [cards, setCards] = useState<Array<Card>>([]);
-    const [currentLanguage, setCurrentLanguage] = useState<string>("id");
-    const [previewCards, setPreviewCards] = useState<Array<any>>([]);
+    const [currLang, setCurrLang] = useState<string>("id");
+    const [previousLanguage, setPreviousLanguage] = useState<string | undefined>(undefined);
+    const [newCards, setNewCards] = useState<Array<string>>([]);
+    const [previewCards, setPreviewCards] = useState<Array<string>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isChange, setIsChange] = useState<boolean>(true);
 
     useEffect(() => {
-        setIsLoading(true);
+        getData(currLang)
+        .then(data => {
+            console.log(data);
+            setPreviewCards(emptySet => data.textBlocks);
+        })
+    }, [])
 
-        async function populatePreview(){
-            // setPreviewCards((await fetch("http://localhost:3000/api/language/" + currentLanguage, {
-            //     method: "GET",
-            // })) as any);
-        
-            const response = await fetch("http://localhost:3000/api/language/" + currentLanguage);
-        
-            const result = await response.json();
-        
-            const textBlocks = result.textBlocks;
-        
-            setPreviewCards(textBlocks);
-        
-            setIsLoading(false);
-        }
-
-        if(isChange){
-            populatePreview();
-            setIsChange(false);
-        }
-    }, [currentLanguage])
+    console.log(newCards);
     
     async function handleFileUpload(e: ChangeEvent){
         const target = e.target as HTMLInputElement;
@@ -68,8 +60,10 @@ export default function AddCards(){
     
     return (
         <div id="card-container" className="mt-[40vh] card-container flex items-center flex-col justify-center">
+            <h1 className="">Language Selected: Indonesian</h1>
             <div>
-                <select onChange={(e: any) => setCurrentLanguage(e.target.value)}>
+                <select onChange={(e: any) => setCurrLang
+            (e.target.value)}>
                     <option>id</option>
                     <option>as</option>
                     <option>en</option>
@@ -84,14 +78,14 @@ export default function AddCards(){
                 <h3 className="w-fit h-fit">Populate Cards (add 5)</h3>
             </button>
             <p>Preview Selection:</p>
-            <div>
-                {previewCards.map((cardInfo, i) => 
-                    <PreviewCard key={ i + "previewCard"}id={"previewCard" + i} description={cardInfo} />
+            <div id="preview-cards" className="flex flex-wrap justify-center items-center">
+                {previewCards?.map((cardInfo, i) => 
+                    <PreviewCard key={ i + "previewCard"}id={"previewCard" + i} selection={newCards} setSelection={setNewCards} description={cardInfo} />
                 )}
             </div>
             {/* <Keyboard /> */}
             <div id="previous-cards" className="">
-                        
+                
             </div>
             <form>
                 <input 
