@@ -1,5 +1,5 @@
 import './globals.css'
-import { Poppins } from 'next/font/google'
+import { Architects_Daughter, Poppins } from 'next/font/google'
 import { NextAuthProvider } from './providers'
 import Navbar from '@/components/Navbar'
 
@@ -17,13 +17,19 @@ const poppins = Poppins({
   variable: '--font-poppins'
 })
 
+const architects = Architects_Daughter({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-architects'
+})
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html className={`${poppins.variable} bg-black/10`} lang="en">
+    <html className={`${poppins.variable} ${architects.variable} bg-black/10`} lang="en">
       <NextAuthProvider>
         <body className={''}>
           {/* @ts-expect-error Async Server Component */}

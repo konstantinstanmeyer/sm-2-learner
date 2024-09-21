@@ -16,12 +16,13 @@ function getData(currentLanguage: string): Promise<any>{
 export default function AddCards(){
     const [image, setImage] = useState<string>("");
     const [cards, setCards] = useState<Array<Card>>([]);
-    const [currLang, setCurrLang] = useState<string>("id");
+    const [currLang, setCurrLang] = useState<string>("indonesian");
     const [previousLanguage, setPreviousLanguage] = useState<string | undefined>(undefined);
     const [newCards, setNewCards] = useState<Array<string>>([]);
     const [previewCards, setPreviewCards] = useState<Array<string>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isChange, setIsChange] = useState<boolean>(true);
+    const [refresh, setRefresh] = useState<boolean>(false);
 
     useEffect(() => {
         getData(currLang)
@@ -29,9 +30,19 @@ export default function AddCards(){
             console.log(data);
             setPreviewCards(emptySet => data.textBlocks);
         })
-    }, [])
+        console.log("hello")
+    }, [currLang])
 
-    console.log(newCards);
+    useEffect(() => {
+        if(refresh){
+            getData(currLang)
+            .then(data => {
+                console.log(data);
+                setPreviewCards(emptySet => data.textBlocks);
+                setRefresh(false);
+            })
+        }
+    }, [refresh])
     
     async function handleFileUpload(e: ChangeEvent){
         const target = e.target as HTMLInputElement;
@@ -59,16 +70,16 @@ export default function AddCards(){
     }
     
     return (
-        <div id="card-container" className="mt-[40vh] card-container flex items-center flex-col justify-center">
-            <h1 className="">Language Selected: Indonesian</h1>
+        <div id="card-container" className="mt-[20vh] card-container flex items-center flex-col justify-center">
+            <h1 className="">Current Language:</h1>
             <div>
                 <select onChange={(e: any) => setCurrLang
             (e.target.value)}>
-                    <option>id</option>
+                    <option>indonesian</option>
                     <option>as</option>
                     <option>en</option>
-                    <option>il</option>
-                    <option>sp</option>
+                    <option>italian</option>
+                    <option>spanish</option>
                 </select>
             </div>
             <form id="testing" className="w-1/2 h-fit bg-white mb-4">
@@ -78,7 +89,7 @@ export default function AddCards(){
                 <h3 className="w-fit h-fit">Populate Cards (add 5)</h3>
             </button>
             <p>Preview Selection:</p>
-            <div id="preview-cards" className="flex flex-wrap justify-center items-center">
+            <div id="preview-cards" className="flex flex-wrap justify-center items-center w-[90%]">
                 {previewCards?.map((cardInfo, i) => 
                     <PreviewCard key={ i + "previewCard"}id={"previewCard" + i} selection={newCards} setSelection={setNewCards} description={cardInfo} />
                 )}

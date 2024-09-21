@@ -7,6 +7,7 @@ interface Params {
 
 export async function GET(request: NextRequest, context: { params: Params }){
     // console.log(process.cwd());
+    console.log(context.params.lid)
     const text = await fs.readFile(process.cwd() + "/lib/common-language/" + context.params.lid + "/basic.txt", 'utf-8');
 
     const textBlocks = text.split('\n');

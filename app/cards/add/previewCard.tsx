@@ -25,8 +25,9 @@ export default function PreviewCard({ description, id, setSelection, selection }
     }
 
     return (
-        <div onClick={(e: MouseEvent) => handleClick(e)} lang={id} className={`w-40 mx-2 bg-gray-300 ${selection.includes(description) ? "bg-red-500" : "bg-black"} py-3 min-h-[5rem] px-4 break-all flex items-center justify-center neumorphic mb-2`}>
-            <p className="text-black text-center">{description}</p>
+        <div onClick={(e: MouseEvent) => handleClick(e)} lang={id} className={`w-24 md:w-40 mx-2 bg-[#fdf7ef] ${selection.includes(description) ? "bg-red-500" : "bg-black"} text-xl py-3 min-h-[5rem] flex-col hyphens-manual break-words flex items-center justify-center neumorphic mb-4`}>
+            {/* <div className="w-[95%] h-[3px] bg-red-600"/> */}
+            <p className="text-black architects mx-1 underline decoration-[#4682B4]">{description}</p>
         </div>
     )
 }
