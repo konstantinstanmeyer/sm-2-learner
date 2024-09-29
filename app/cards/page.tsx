@@ -1,15 +1,15 @@
 import { getServerSession } from "next-auth";
 
 export default async function Cards(){
-    const data = await getCards();
+    // const data = await getCards();
 
-    if(!data) return <p>not logged in</p>
+    // if(!data) return <p>not logged in</p>
 
     // console.log(data)
 
     return (
         <div className="w-screen flex flex-col items-center relative">
-            {data.length < 1 ? 
+            {/* {data.length < 1 ? 
             <div className="h-screen flex items-center justify-center">
                 <a href="/cards/add">add+...</a>
             </div>
@@ -17,7 +17,7 @@ export default async function Cards(){
             <div className="flex w-3/4 flex-wrap">
                 
             </div>
-            }
+            } */}
         </div>
     )
 }
@@ -38,8 +38,11 @@ async function getCards(){
             throw new Error("Could not fetch data from server, please try again.")
         }
 
+        console.log("hello")
+
         return res.json();
     } else {
+        console.log("hello")
         return false;
     }
 }
