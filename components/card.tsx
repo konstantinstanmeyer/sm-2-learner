@@ -1,4 +1,3 @@
-"use client"
 import { useState } from "react";
 import { Sample } from "@/lib/samples";
 import CardOptions from "./CardOptions";
