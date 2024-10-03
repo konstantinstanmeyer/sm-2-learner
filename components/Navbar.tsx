@@ -1,9 +1,7 @@
 import SignIn from '@/components/SignIn'
 import SignOut from '@/components/SignOut'
-import { getServerSession } from 'next-auth';
 
-export default async function Navbar(){
-    const session = await getServerSession();
+export default function Navbar({ session }: any){
 
     return (
         <div className="z-50 w-screen h-[9vh] flex flex-row items-center fixed top-0 bg-white">

@@ -2,6 +2,7 @@ import './globals.css'
 import { Architects_Daughter, Poppins } from 'next/font/google'
 import { NextAuthProvider } from './providers'
 import Navbar from '@/components/Navbar'
+import { getServerSession } from "next-auth"
 
 import type { AppContext } from 'next/app';
 import { getSession } from 'next-auth/react';
@@ -23,17 +24,19 @@ const architects = Architects_Daughter({
   variable: '--font-architects'
 })
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+  const session = await getServerSession();
+
   return (
     <html className={`${poppins.variable} ${architects.variable} bg-black/10`} lang="en">
       <NextAuthProvider>
         <body className={''}>
-          {/* @ts-expect-error Async Server Component */}
-          <Navbar />
+          <Navbar session={session} />
           {children}
         </body>
       </NextAuthProvider>
