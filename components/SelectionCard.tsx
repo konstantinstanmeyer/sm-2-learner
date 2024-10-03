@@ -7,7 +7,7 @@ interface Props {
 export default function SessionCard({ selection }: Props){
     return (
         <div className="">
-
+            <h2>Hello</h2>
         </div>
     )
 }
